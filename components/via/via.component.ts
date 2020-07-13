@@ -10297,7 +10297,7 @@ export class ViaComponent implements OnInit, AfterViewInit {
 
 
 
-    // _via_show_img(1);
+     _via_show_img(0;
     update_img_fn_list();
   }
 
