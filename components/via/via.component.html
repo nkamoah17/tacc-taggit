@@ -176,9 +176,9 @@
 
           <li>View
             <ul>
-              <!-- <li onclick="image_grid_toggle()" title="Toggle between single image view and image grid view">Toggle image grid view</li>
-              <li onclick="leftsidebar_toggle()" title="Show or hide the sidebar shown in left hand side">Toggle left sidebar</li> -->
-<li onclick="toggle_img_fn_list_visibility()" title="Show or hide a panel to update annotations corresponding to file and region">Toggle image filename list</li>
+              <li onclick="image_grid_toggle()" title="Toggle between single image view and image grid view">Toggle image grid view</li>
+              <li onclick="leftsidebar_toggle()" title="Show or hide the sidebar shown in left hand side">Toggle left sidebar</li>
+              <li onclick="toggle_img_fn_list_visibility()" title="Show or hide a panel to update annotations corresponding to file and region">Toggle image filename list</li>
               <li class="submenu_divider"></li>
               <li onclick="toggle_attributes_editor()" title="Show or hide a panel to update file and region attributes">Toggle attributes editor</li>
               <li onclick="annotation_editor_toggle_all_regions_editor()" title="Show or hide a panel to update annotations corresponding to file and region">Toggle annotation editor (Space)</li>
@@ -203,34 +203,6 @@
         </ul>
       </div> <!-- end of menubar -->
 
-      <!-- Shortcut toolbar -->
-      <div class="toolbar">
-        <!-- <svg onclick="project_open_select_project_file()" viewbox="0 0 24 24"><use xlink:href="#icon_open"></use><title>Open Project</title></svg> -->
-        <!-- <svg onclick="project_save_with_confirm()" viewbox="0 0 24 24"><use xlink:href="#icon_save"></use><title>Save Project</title></svg>
-        <svg onclick="settings_panel_toggle()" viewbox="0 0 24 24"><use xlink:href="#icon_settings"></use><title>Update Project Settings</title></svg>
-        <svg onclick="" viewbox="0 0 24 24"><use xlink:href="#icon_checkbox"></use><title>Locate Files</title></svg>
-        -->
-
-        <!-- <svg onclick="sel_local_data_file('annotations')" style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_fileupload"></use><title>Import Annotations from CSV</title></svg>
-        <svg onclick="download_all_region_data('csv')" viewbox="0 0 24 24"><use xlink:href="#icon_filedownload"></use><title>Download Annotations as CSV</title></svg> -->
-
-        <!-- <svg onclick="image_grid_toggle()" id="toolbar_image_grid_toggle" #toolbar_image_grid_toggle style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_gridon"></use><title>Switch to Image Grid View</title></svg>
-        <svg onclick="annotation_editor_toggle_all_regions_editor()" viewbox="0 0 24 24"><use xlink:href="#icon_insertcomment"></use><title>Toggle Annotation Editor</title></svg> -->
-
-        <!-- <svg onclick="move_to_prev_image()" style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_prev"></use><title>Previous</title></svg>
-        <svg onclick="toggle_img_fn_list_visibility()" viewbox="0 0 24 24"><use xlink:href="#icon_list"></use><title>Toggle Filename List</title></svg> -->
-        <!-- <svg onclick="move_to_next_image()" viewbox="0 0 24 24"><use xlink:href="#icon_next"></use><title>Next</title></svg> -->
-<!-- 
-        <svg onclick="zoom_in()" style="margin-left:1rem;" viewbox="0 0 24 24"><use xlink:href="#icon_zoomin"></use><title>Zoom In</title></svg>
-        <svg onclick="zoom_out()" viewbox="0 0 24 24"><use xlink:href="#icon_zoomout"></use><title>Zoom Out</title></svg> -->
-<!-- 
-        <svg onclick="sel_all_regions()" viewbox="0 0 24 24" style="margin-left:1rem;"><use xlink:href="#icon_selectall"></use><title>Select All Regions</title></svg>
-        <svg onclick="copy_sel_regions()" viewbox="0 0 24 24"><use xlink:href="#icon_copy"></use><title>Copy Regions</title></svg>
-        <svg onclick="paste_sel_regions_in_current_image()" viewbox="0 0 24 24"><use xlink:href="#icon_paste"></use><title>Paste Regions</title></svg>
-        <svg onclick="paste_to_multiple_images_with_confirm()" viewbox="0 0 24 24"><use xlink:href="#icon_pasten"></use><title>Paste Region in Multiple Images</title></svg>
-        <svg onclick="del_sel_regions_with_confirm()" viewbox="0 0 24 24"><use xlink:href="#icon_pasteundo"></use><title>Undo Regions Pasted in Multiple Images</title></svg>
-        <svg onclick="del_sel_regions()" viewbox="0 0 24 24"><use xlink:href="#icon_close"></use><title>Delete Region</title></svg> -->
-      </div>
       <!-- end of shortcut toolbar -->
       <input type="file" id="invisible_file_input" name="files[]" style="display:none" #invisible_file_input>
     </div> <!-- endof #top_panel -->
@@ -243,11 +215,11 @@
       </div>
 
       <div id="leftsidebar" #leftsidebar>
-        <!-- <div class="leftsidebar_accordion_panel show" style="float:right; border:2px solid #f2f2f2;">
+        <div class="leftsidebar_accordion_panel show" style="float:right; border:2px solid #f2f2f2;">
           <span class="text_button" onclick="leftsidebar_decrease_width()" title="Reduce width of this toolbar panel">&#x2190;</span>
           <span class="text_button" onclick="leftsidebar_increase_width()" title="Increase width of this toolbar panel">&#x2192;</span>
           <span class="text_button" onclick="leftsidebar_toggle()" title="Show/hide this toolbar panel">&#x25C2;</span>
-        </div> -->
+        </div>
 
         <button class="leftsidebar_accordion active">Region Shape</button>
         <div class="leftsidebar_accordion_panel show">
@@ -414,15 +386,14 @@
 
       <!-- Main display area: contains image canvas, ... -->
       <div id="display_area" #display_area>
-        <div id="image_panel" class="display_area_content display_none" #image_panel>
+        <div  id="image_panel" class="display_area_content display_none" #image_panel
+            >
           <!-- buffer images using <img> element will be added here -->
+          <!-- *ngFor = [ngStyle]="{'visibility':_isDivVisible ? 'visible' : 'hidden'}" -->
+		        <!-- <img [src]="getPath()" id="region_canvas"> --> 
 
-		        <!-- <img [src]="getPath()" id="region_canvas"> -->
-
-      <!-- @todo: in future versions, this canvas will be replaced by a <svg> element -->
-        <!-- <embed id='region_canvas' type="image/jpg" [src]="getPath()" width="1" height="1" #region_canvas > -->
-
-            <canvas id="region_canvas" width="1" height="1" tabindex="1" #region_canvas >Sorry, your browser does not support HTML5 Canvas functionality which is required for this application.</canvas>
+          <!-- @todo: in future versions, this canvas will be replaced by a <svg> element -->
+            <canvas id="region_canvas" width="1" height="1" tabindex="0" #region_canvas >Sorry, your browser does not support HTML5 Canvas functionality which is required for this application.</canvas>
             <!-- here, a child div with id="annotation_editor" is added by javascript -->
         </div>
         <div id="image_grid_panel" class="display_area_content display_none" #image_grid_panel>
@@ -550,7 +521,7 @@
                 <option value="NEAR_REGION">close to selected region</option>
                 <option value="IMAGE_BOTTOM">at the bottom of image being annotated</option>
                 <option value="DISABLE">DISABLE on-image annotation editor</option>
-              </select>
+              </select> 
             </div>
           </div>
 
@@ -578,6 +549,58 @@
           </ul>
 
         </div>
+        <div id="page_about" class="display_area_content display_none" style="width:40rem !important">
+          <div style="text-align:center">
+            <a href="http://www.robots.ox.ac.uk/~vgg/software/via/">
+              <svg height="160" viewbox="0 0 400 160" style="background-color:#212121;">
+                <use xlink:href="#via_logo"></use>
+              </svg>
+            </a>
+          </div>
+
+          <p style="font-family:mono; font-size:0.8em;text-align:center;"><a href="https://gitlab.com/vgg/via/blob/master/CHANGELOG">Version 2.0.10</a></p>
+          <p>VGG Image Annotator (VIA) is an image annotation tool that can be used to define regions in an image and create textual descriptions of those regions. VIA is an <a href="https://gitlab.com/vgg/via/">open source project</a> developed at the <a href="http://www.robots.ox.ac.uk/~vgg/">Visual Geometry Group</a> and released under the BSD-2 clause <a href="https://gitlab.com/vgg/via/blob/master/LICENSE">license</a>.</p>
+          <!-- <p>Here is a list of some salient features of VIA:
+            <ul>
+              <li>based solely on HTML, CSS and Javascript (no external javascript libraries)</li>
+              <li>can be used off-line (full application in a single html file of size &lt; 400KB)</li>
+              <li>requires nothing more than a modern web browser (tested on Firefox, Chrome and Safari)</li>
+              <li>supported region shapes: rectangle, circle, ellipse, polygon, point and polyline</li>
+              <li>import/export of region data in csv and json file format</li>
+            </ul>
+          </p> -->
+          
+
+          <div id="page_license" class="display_area_content display_none narrow_page_content">
+            <pre>
+                Copyright (c) 2016-2019, Abhishek Dutta, Visual Geometry Group, Oxford University and VIA Contributors.
+                All rights reserved.
+  
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions are met:
+  
+                Redistributions of source code must retain the above copyright notice, this
+                list of conditions and the following disclaimer.
+                Redistributions in binary form must reproduce the above copyright notice,
+                this list of conditions and the following disclaimer in the documentation
+                and/or other materials provided with the distribution.
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+                AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+                IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+                ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+                LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+                CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+                SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+                INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+                CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+                ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+                POSSIBILITY OF SUCH DAMAGE.
+            </pre>
+          </div>
+          <p>For more details, visit <a href="http://www.robots.ox.ac.uk/~vgg/software/via/">http://www.robots.ox.ac.uk/~vgg/software/via/</a>.</p>
+          <p>&nbsp;</p>
+          <p>Copyright &copy; 2020, <a href="mailto:adutta-removeme@robots.ox.ac.uk">Abhishek Dutta</a>,Visual Geometry Group, Oxford University and <a target="_blank" href="https://gitlab.com/vgg/via/blob/master/Contributors.md">VIA Contributors</a>.</p>
+        </div> <!-- end of page_about -->
 
       </div> <!-- end of display_area -->
     </div> <!-- end of middle_panel -->
